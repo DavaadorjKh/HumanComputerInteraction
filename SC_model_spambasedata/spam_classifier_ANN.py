@@ -3,6 +3,8 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.utils import to_categorical
 from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import classification_report
+import numpy as np
 
 X_train, X_test, y_train, y_test = load_and_preprocess_data("spambase.data")
 
@@ -23,5 +25,16 @@ model.fit(X_train, y_train_encoded, epochs=10, batch_size=32, validation_split=0
 
 model.save("spam_ann_model.h5")
 
+
+
 loss, accuracy = model.evaluate(X_test, y_test_encoded)
 print(f"Test Нарийвчлал: {accuracy:.2f}")
+y_pred_probs = model.predict(X_test)
+y_pred_classes = np.argmax(y_pred_probs, axis=1)
+
+# Жинхэнэ y_test-ийг one-hot-оос буцааж анги болгон хөрвүүлнэ
+y_true = np.argmax(y_test_encoded, axis=1)
+
+# Нарийвчилсан тайлан хэвлэх
+print(f"Test Нарийвчлал: {accuracy:.2f}")
+print("\n" + classification_report(y_true, y_pred_classes, digits=2))
