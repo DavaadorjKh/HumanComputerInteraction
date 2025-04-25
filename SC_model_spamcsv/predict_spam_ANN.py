@@ -14,4 +14,4 @@ vec = preprocessor.transform([user_input])
 
 # Таамаглал
 pred = model.predict(vec)[0]
-print("⚠️ SPAM байна." if pred == "spam" else "✅ SPAM биш.")
+print("SPAM байна." if pred == "spam" else "SPAM биш.")
