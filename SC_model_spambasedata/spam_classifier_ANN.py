@@ -8,7 +8,6 @@ import numpy as np
 
 X_train, X_test, y_train, y_test = load_and_preprocess_data("spambase.data")
 
-# Label-ийг one-hot болгох
 encoder = LabelEncoder()
 y_train_encoded = to_categorical(encoder.fit_transform(y_train))
 y_test_encoded = to_categorical(encoder.transform(y_test))
@@ -32,9 +31,7 @@ print(f"Test Нарийвчлал: {accuracy:.2f}")
 y_pred_probs = model.predict(X_test)
 y_pred_classes = np.argmax(y_pred_probs, axis=1)
 
-# Жинхэнэ y_test-ийг one-hot-оос буцааж анги болгон хөрвүүлнэ
 y_true = np.argmax(y_test_encoded, axis=1)
 
-# Нарийвчилсан тайлан хэвлэх
 print(f"Test Нарийвчлал: {accuracy:.2f}")
 print("\n" + classification_report(y_true, y_pred_classes, digits=2))
