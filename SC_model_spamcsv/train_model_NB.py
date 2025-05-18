@@ -6,7 +6,7 @@ import joblib
 from text_preprocessing import TextPreprocessor
 
 
-df = pd.read_csv("spam.csv")  # Header байгаа тул шууд уншина
+df = pd.read_csv("spam.csv")
 X = df["Message"]
 y = df["Category"]
 

@@ -11,7 +11,7 @@ df = pd.read_csv("spam.csv")
 X = df["Message"]
 y = df["Category"]
 
-# Preprocessing (TF-IDF)
+# Preprocessing
 preprocessor = TextPreprocessor()
 X_vec = preprocessor.fit_transform(X)
 preprocessor.save()
@@ -20,7 +20,7 @@ preprocessor.save()
 X_train, X_test, y_train, y_test = train_test_split(X_vec, y, test_size=0.2, random_state=42)
 
 # Logistic Regression model
-model = LogisticRegression(max_iter=1000)  # max_iter ихэсгэх хэрэгтэй байж магадгүй
+model = LogisticRegression(max_iter=1000)
 model.fit(X_train, y_train)
 
 # Модел хадгалах

@@ -1,10 +1,9 @@
 import joblib
 from text_preprocessing import TextPreprocessor
 
-# Ачаалж байна
 model = joblib.load("spam_model_NB.pkl")
 preprocessor = TextPreprocessor()
-preprocessor.load()  # vectorizer-г ачаалж байна
+preprocessor.load()
 
 # Хэрэглэгчээс текст
 user_input = input("Шалгах текстээ оруулна уу: ")
